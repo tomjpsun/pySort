@@ -25,7 +25,7 @@ print("Before Sorting:", f"{data}\n")
 
 
 pivot_index = 0
-left_index, right_index = 1, n-1
+left_index, right_index = 0, n-1
 
 
 def qsort(data, pivot_index, left_index, right_index):
@@ -39,21 +39,27 @@ def qsort(data, pivot_index, left_index, right_index):
     end = right_index
 
     while left_index < right_index:
-
         while 1:  # find left index
             if data[left_index] > data[pivot_index]:
                 break
             left_index += 1
+            if left_index == n:
+                break
 
         while 1:  # find right index
             if data[right_index] < data[pivot_index]:
                 break
             right_index -= 1
+            if right_index == 0:
+                break
 
         if left_index < right_index:  # check
             swap(data, left_index, right_index)
         else:
+            print('swap pivot {} and right {}'.format(data[pivot_index], data[right_index]))
             swap(data, pivot_index, right_index)
+            pivot_index = right_index
+            print('new pivot index {}, data {}'.format(pivot_index, data))
             break
 
     qsort(data, begin, begin, pivot_index-1)
