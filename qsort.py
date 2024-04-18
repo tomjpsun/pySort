@@ -43,14 +43,14 @@ def qsort(data, pivot_index, left_index, right_index):
             if data[left_index] > data[pivot_index]:
                 break
             left_index += 1
-            if left_index == n:
+            if left_index == end:
                 break
 
         while 1:  # find right index
             if data[right_index] < data[pivot_index]:
                 break
             right_index -= 1
-            if right_index == 0:
+            if right_index == begin:
                 break
 
         if left_index < right_index:  # check
